@@ -1,0 +1,88 @@
+GIT COMMANDS USED IN THIS ASSIGNMENT
+=====================================
+
+--- Step 1: Local Repository Setup ---
+
+mkdir login-portal
+    Create a new project folder on the local machine.
+
+cd login-portal
+    Move into the project folder so Git commands run inside it.
+
+git init -b main
+    Initialise a new, empty Git repository with "main" as the default branch.
+
+--- Step 2: Git Workflow Execution ---
+
+git add index.html about.html
+    Stage both HTML files so they are included in the next commit.
+
+git commit -m "Initial commit: add index.html and about.html"
+    Record the initial state of the project as the first commit.
+
+git add index.html
+    Stage the modified index.html after editing it.
+
+git commit -m "Add footer to index.html"
+    Create the second commit capturing the change to index.html.
+
+git branch feature
+    Create a new branch named "feature".
+
+git switch feature
+    Switch the working directory to the feature branch.
+
+git commit -m "Add navigation links to about.html on feature branch"
+    Commit a change made to about.html while on the feature branch.
+
+git switch main
+    Switch back to the main branch.
+
+git merge --no-ff feature -m "Merge feature branch into main"
+    Merge the feature branch into main. --no-ff forces a merge commit so the
+    branch activity stays visible in the history.
+
+git log --oneline --graph --all --decorate
+    Display the full commit history as a graph showing commits and branches.
+
+--- Step 3: .gitignore Implementation ---
+
+git add .gitignore
+    Stage the .gitignore file.
+
+git commit -m "Add .gitignore for log files and temp folder"
+    Commit the .gitignore so Git stops tracking *.log files and the temp/ folder.
+
+git status --short
+    Confirm the ignored files (debug.log, temp/) do not show up as changes.
+
+--- Step 4: Undo Operation ---
+
+git commit -m "Add temporary line (to be undone)"
+    Make an extra commit that will then be undone.
+
+git reset --soft HEAD~1
+    Undo the last commit. --soft removes the commit but keeps the changes
+    staged, so nothing is lost. The history returns to its previous state.
+
+git status
+    Show the repository state after the undo (change is staged, not committed).
+
+--- Step 5: GitHub Integration ---
+
+git remote add origin https://github.com/<username>/login-portal.git
+    Connect the local repository to the new public GitHub repository.
+
+git branch -M main
+    Ensure the current branch is named main before pushing.
+
+git push -u origin main
+    Push the complete repository and its history to GitHub and set the upstream.
+
+--- Useful supporting commands ---
+
+git status
+    Show the current state of the working directory and staging area.
+
+git log --oneline
+    Show a compact, one-line-per-commit view of the history.
